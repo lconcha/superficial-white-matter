@@ -18,7 +18,7 @@ out_laplace = sys.argv[2]
 
 # parameters
 convergence_threshold = 1e-4
-max_iters = 10
+max_iters = 1000
 kernelSize = 3 # in voxels
 alpha = 0.1 # add some weighting of the distance transform
 fg_labels = [41, 2]
