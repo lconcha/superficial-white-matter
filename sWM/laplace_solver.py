@@ -15,10 +15,15 @@ import glob
 print('starting laplace solver')
 in_seg = sys.argv[1]
 out_laplace = sys.argv[2]
+max_iters = sys.argv[3] # was 1000
+
+print('in_seg: '      + in_seg)
+print('out_laplace: ' + out_laplace)
+print('max_iters: '   + max_iters)
+max_iters = int(max_iters)
 
 # parameters
 convergence_threshold = 1e-4
-max_iters = 1000
 kernelSize = 3 # in voxels
 alpha = 0.1 # add some weighting of the distance transform
 fg_labels = [41, 2]
