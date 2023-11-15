@@ -18,7 +18,7 @@ out_laplace = sys.argv[2]
 
 # parameters
 convergence_threshold = 1e-4
-max_iters = 1000
+max_iters = 10
 kernelSize = 3 # in voxels
 alpha = 0.1 # add some weighting of the distance transform
 fg_labels = [41, 2]
@@ -89,6 +89,24 @@ coords = coords*(1-alpha) + (init_coords*alpha)
 
 coords[source==1] = -0.01
 # save file
-print('saving')
+print('saving ...')
+fout = out_laplace
 coords_nib = nib.Nifti1Image(coords, lbl_nib.affine, lbl_nib.header)
+print(fout)
 nib.save(coords_nib, out_laplace)
+
+dx,dy,dz = np.gradient(coords)
+i_d = nib.Nifti1Image(dx, lbl_nib.affine, lbl_nib.header)
+fout = out_laplace + '_dx'
+print(fout)
+nib.save(i_d, fout)
+
+i_d = nib.Nifti1Image(dy, lbl_nib.affine, lbl_nib.header)
+fout = out_laplace + '_dy'
+print(fout)
+nib.save(i_d, fout)
+
+i_d = nib.Nifti1Image(dz, lbl_nib.affine, lbl_nib.header)
+fout = out_laplace + '_dz'
+print(fout)
+nib.save(i_d, fout)
