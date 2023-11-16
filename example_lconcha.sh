@@ -22,3 +22,5 @@ python /misc/lauterbur/lconcha/code/superficial-white-matter/sWM/laplace_solver.
   aparc+aseg.mgz \
   ${sID}_lap_${nIter_lap} \
   $nIter_lap
+
+mrcat -axis 3 ${sID}_lap_${nIter_lap}_d?.nii ${sID}_lap_${nIter_lap}_vec.nii
