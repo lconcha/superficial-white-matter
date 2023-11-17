@@ -10,7 +10,7 @@ Created on Wed Nov 15 19:57:59 2023
 import copy
 import nibabel as nib
 import numpy as np
-from scipy.interpolate import RegularGridInterpolator
+#from scipy.interpolate import RegularGridInterpolator
 import sys
 from mayavi import mlab
 
