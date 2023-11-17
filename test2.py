@@ -15,10 +15,13 @@ import sys
 from mayavi import mlab
 
 
-in_surf_scanner = '/misc/lauterbur/lconcha/TMP/swm/lh_white_scanner.gii'
-in_surf_trk = '/misc/lauterbur/lconcha/TMP/swm/lh_white_scanner.trk'
-in_laplace = '/misc/lauterbur/lconcha/TMP/swm/sub-74277_lap_100.nii'
-out_surf_prefix = '/misc/lauterbur/lconcha/TMP/swm/sub-74277_lap_100_beeee'
+# in mansfield: /misc/lauterbur/lconcha/TMP/swm/
+# in syphon: /datos/syphon/lconcha/tmp/laplace
+
+in_surf_scanner = 'lh_white_scanner.gii'
+in_surf_trk = 'lh_white_scanner.trk'
+in_laplace = 'sub-74277_lap_100.nii'
+out_surf_prefix = 'sub-74277_lap_100_beeee'
 depth = 2
 
 
