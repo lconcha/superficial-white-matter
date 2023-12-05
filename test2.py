@@ -36,21 +36,33 @@ lp = laplace.get_fdata()
 print('loaded data and parameters')
 
 
+ #V[:,:] = V - laplace.affine[:3,3].T
+
 V2 = V.copy()
-V2[:,:] = V - laplace.affine[:3,3].T
-for xyz in range(3):
-    V2[:,xyz] = V2[:,xyz]*(1/laplace.affine[xyz,xyz])
+V3 = V.copy()
+
+
+V2 = V2 - laplace.affine[:3,3].T
+
+nvertices = V.shape[0]
+
+for vindex in range(nvertices):
+    thisv = V[vindex,:];
+    
+    thisv = thisv - laplace.affine[:3,3].T
+    
+    thisvpad = np.append(thisv,1)
+    thisvpadtransformed = thisvpad.dot(laplace.affine)
+    V2[vindex,:] = thisvpadtransformed[0:3]
+
+    #thisvpad = np.append(thisv,1)
+    #thisvpadtransformed = thisvpad.dot(np.linalg.inv(laplace.affine))
+    #V3[vindex,:] = thisvpadtransformed[0:3]
 
     
-x = V[:,0]
-y = V[:,1]
-z = V[:,2]
 
-x2 = V2[:,0]
-y2 = V2[:,1]
-z2 = V2[:,2]
- 
-mlab.points3d(x,y,z)
-mlab.points3d(x2,y2,z2)
+#mlab.points3d(V[:,0],  V[:,1],  V[:,2], color=(1,1,1) )
+mlab.points3d(V2[:,0], V2[:,1], V2[:,2], color=(1,0,0) )
+#mlab.points3d(V3[:,0], V3[:,1], V3[:,2], color=(0,0,1) )
 mlab.volume_slice(lp)
  
